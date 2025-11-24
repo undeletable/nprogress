@@ -17,6 +17,7 @@
   NProgress.version = '0.2.0';
 
   var Settings = NProgress.settings = {
+    barColor: '#29d',
     minimum: 0.08,
     easing: 'linear',
     positionUsing: '',
@@ -222,15 +223,17 @@
    */
 
   NProgress.render = function(fromStart) {
-    if (NProgress.isRendered()) return document.getElementById('nprogress');
+    var isRendered = NProgress.isRendered(),
+        progress = isRendered ? document.getElementById('nprogress') : document.createElement('div');
+
+    progress.style.setProperty('--bar-color', Settings.barColor);    
+
+    if (isRendered) return progress;
 
     addClass(document.documentElement, 'nprogress-busy');
 
-    var progress = document.createElement('div');
     progress.id = 'nprogress';
     progress.innerHTML = Settings.template;
-
-
 
     var bar = progress.querySelector(Settings.barSelector),
         perc = fromStart ? '-100' : toBarPerc(NProgress.status || 0),

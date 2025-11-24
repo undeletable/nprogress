@@ -180,8 +180,7 @@ NProgress.configure({ parent: '#container' });
 Customization
 -------------
 
-Just edit `nprogress.css` to your liking. Tip: you probably only want to find
-and replace occurrences of `#29d`.
+Just edit `nprogress.css` to your liking.
 
 The included CSS file is pretty minimal... in fact, feel free to scrap it and
 make your own!
